@@ -1,0 +1,23 @@
+.MainPage {
+  height: 100vh;
+  overflow: hidden;
+  border: 1px solid #000;
+  background: #202020;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.25);
+  position: relative;
+}
+
+.topArc {
+  position: absolute;
+  top: 0;
+  z-index: 2;
+}
+
+.lowArc {
+  z-index: 1;
+  height: 740px;
+  position: absolute;
+  bottom: 0;
+  left: 32%;
+  overflow: hidden;
+}

@@ -1,0 +1,13 @@
+
+// Colors
+$color-background-primary: hsl(0, 0%, 5%);
+$color-text-primary: hsl(0, 0%, 100%);
+
+// Loading animation
+$loading-fade-duration: 1s;
+$loading-fade-timing: ease-out;
+
+// Z-index layers
+$z-loading: 9999;
+$z-modal: 1000;
+$z-header: 100;
