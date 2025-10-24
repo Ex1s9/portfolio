@@ -1,0 +1,67 @@
+@use 'variables' as *;
+
+.fontFamily {
+     &-inter {
+          font-family: $font-inter;
+     }
+
+     &-italiana {
+          font-family: $font-italiana;
+     }
+}
+
+.fontSize {
+     &-10 {
+          font-size: 10px;
+          line-height: 13px;
+     }
+
+     &-12 {
+          font-size: 12px;
+          line-height: 14px;
+     }
+
+     &-14 {
+          font-size: 14px;
+          line-height: 16px;
+     }
+
+     &-16 {
+          font-size: 16px;
+          line-height: 18px;
+     }
+
+     &-18 {
+          font-size: 18px;
+          line-height: 20px;
+     }
+
+     &-22 {
+          font-size: 22px;
+          line-height: 24px;
+     }
+
+     &-28 {
+          font-size: 28px;
+          line-height: 28px;
+     }
+}
+
+.fontWeight {
+     &-bold {
+          font-weight: 700;
+     }
+
+     &-regular {
+          font-weight: 400;
+     }
+}
+
+.color {
+     color: inherit;
+}
+
+.buttonText {
+     font-size: 14px;
+     line-height: 16px;
+}

@@ -1,2 +1,1 @@
-export { Loading } from './loading';
 export { GlassEffect } from './GlassEffect';
