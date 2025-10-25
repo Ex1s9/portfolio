@@ -1,0 +1,56 @@
+.glassContainer {
+  position: relative;
+  border: 1px solid #D4D0C8;
+  background: rgba(0, 0, 0, 0.32);
+  backdrop-filter: blur(5px);
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+.topIcons {
+  position: absolute;
+  top: 74px;
+  left: 40px;
+  display: flex;
+  gap: 20px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.topLeftIcon,
+.topRightIcon {
+  pointer-events: auto;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+}
+
+.bottomRightIcons {
+  position: absolute;
+  bottom: 30px;
+  right: 50px;
+  display: flex;
+  z-index: 1;
+}
+
+.bottomRightIcon {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
