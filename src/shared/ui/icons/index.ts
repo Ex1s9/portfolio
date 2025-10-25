@@ -1,4 +1,9 @@
-export { TopArcIcon } from './top-arcIcon/TopArcIcon';
-export { AnimatedTopArcIcon } from './top-arcIcon/AnimatedTopArcIcon';
-export { LowArcIcon } from './low-arcIcon/LowArcIcon';
 export { AnimatedLowArcIconn } from './low-arcIcon/AnimatedLowArcIconn';
+export { LowArcIcon } from './low-arcIcon/LowArcIcon';
+export { AnimatedTopArcIcon } from './top-arcIcon/AnimatedTopArcIcon';
+export { TopArcIcon } from './top-arcIcon/TopArcIcon';
+
+export { GitHubIcon } from './GitHubIcon/GitHubIcon';
+export { TelegramIcon } from './TelegramIcon/TelegramIcon';
+export { ThemeIcon } from './ThemeIcon/ThemeIcon';
+export { TranslateIcon } from './TranslateIcon/TranslateIcon';
