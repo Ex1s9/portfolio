@@ -1,12 +1,17 @@
 import { GlassEffect } from "@/components";
 import { Typography } from "@/shared/ui/typography";
 import { BackgroundArc } from "@/widgets/backgoundArc/BackgroundArc";
+import clsx from 'clsx';
 import styles from './MainPage.module.scss';
 
-export const MainPage = () => {
+interface MainPageProps {
+    isLoaded: boolean;
+}
+
+export const MainPage = ({ isLoaded }: MainPageProps) => {
     return (
         <div className={styles.MainPage}>
-            <div className={styles.textBlock}>
+            <div className={clsx(styles.textBlock, isLoaded && styles.loaded)}>
                 <Typography className={styles.firstWord} as="span" fontWeight="regular" fontFamily="italiana">
                     web-
                 </Typography>

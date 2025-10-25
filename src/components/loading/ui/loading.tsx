@@ -5,9 +5,10 @@ import styles from './loading.module.scss';
 
 interface LoadingPageProps {
   onLoadingComplete?: () => void;
+  onFadeStart?: () => void;
 }
 
-export const Loading = ({ onLoadingComplete }: LoadingPageProps) => {
+export const Loading = ({ onLoadingComplete, onFadeStart }: LoadingPageProps) => {
   const [showFullName, setShowFullName] = useState(true);
   const [showPortfolio, setShowPortfolio] = useState(true);
   const [showBackground, setShowBackground] = useState(true);
@@ -23,13 +24,16 @@ export const Loading = ({ onLoadingComplete }: LoadingPageProps) => {
 
     const timer3 = setTimeout(() => {
       setShowBackground(false);
+      if (onFadeStart) {
+        onFadeStart();
+      }
     }, 2000);
 
     const timer4 = setTimeout(() => {
       if (onLoadingComplete) {
         onLoadingComplete();
       }
-    }, 4000);
+    }, 2700);
 
     return () => {
       clearTimeout(timer1);
