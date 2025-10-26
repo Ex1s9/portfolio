@@ -1,5 +1,7 @@
-import { ReactNode } from 'react';
 import clsx from 'clsx';
+import Link from 'next/link';
+import { ReactNode } from 'react';
+import { CircleIcon, GitHubIcon, TelegramIcon, ThemeIcon, TranslateIcon } from '../icons';
 import styles from './GlassContainer.module.scss';
 
 interface GlassContainerProps {
@@ -19,10 +21,6 @@ interface GlassContainerProps {
 export const GlassContainer = ({
     children,
     className,
-    topLeftIcon,
-    topRightIcon,
-    bottomRightIcon1,
-    bottomRightIcon2,
     width = 'auto',
     height = 'auto',
     minWidth,
@@ -39,18 +37,33 @@ export const GlassContainer = ({
 
     return (
         <div className={clsx(styles.glassContainer, className)} style={containerStyle}>
+
+            <div className={styles.topLeftCircle}>
+                <CircleIcon />
+            </div>
+
+            <div className={styles.bottomLeftCircle}>
+                <CircleIcon />
+            </div>
+
+            <div className={styles.bottomRightCircle}>
+                <CircleIcon />
+            </div>
+
             {/* Верхние иконки */}
             <div className={styles.topIcons}>
-                {topLeftIcon && (
-                    <div className={styles.topLeftIcon}>
-                        {topLeftIcon}
-                    </div>
-                )}
-                {topRightIcon && (
-                    <div className={styles.topRightIcon}>
-                        {topRightIcon}
-                    </div>
-                )}
+                <div className={styles.topLeftIcon}>
+                    <TranslateIcon />
+                </div>
+                <div className={styles.topRightIcon}>
+                    <ThemeIcon />
+                </div>
+            </div>
+
+            <div className={styles.topRightButtons}>
+                <Link href="/about" className={styles.main}> О нас </Link>
+                <Link href="/projects" className={styles.projects}> Проекты </Link>
+                <Link href="/contact" className={styles.aboutMe}> Контакты </Link>
             </div>
 
             {/* Основной контент */}
@@ -60,16 +73,13 @@ export const GlassContainer = ({
 
             {/* Нижние правые иконки */}
             <div className={styles.bottomRightIcons}>
-                {bottomRightIcon1 && (
-                    <div className={styles.bottomRightIcon}>
-                        {bottomRightIcon1}
-                    </div>
-                )}
-                {bottomRightIcon2 && (
-                    <div className={styles.bottomRightIcon}>
-                        {bottomRightIcon2}
-                    </div>
-                )}
+                <div className={styles.bottomRightIcon}>
+                    <TelegramIcon />
+                </div>
+
+                <div className={styles.bottomRightIcon}>
+                    <GitHubIcon />
+                </div>
             </div>
         </div>
     );

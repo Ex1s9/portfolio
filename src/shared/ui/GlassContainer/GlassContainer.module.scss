@@ -54,3 +54,24 @@
     transform: scale(1.1);
   }
 }
+
+.topLeftCircle {
+  position: absolute;
+  top: 7px;
+  left: 7px;
+  z-index: 2;
+}
+
+.bottomLeftCircle {
+  position: absolute;
+  bottom: 0px;
+  left: 7px;
+  z-index: 2;
+}
+
+.bottomRightCircle {
+  position: absolute;
+  bottom: 0px;
+  right: 7px;
+  z-index: 2;
+}
