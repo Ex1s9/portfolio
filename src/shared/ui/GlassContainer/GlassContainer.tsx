@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import Link from 'next/link';
 import { ReactNode } from 'react';
 import { CircleIcon, GitHubIcon, TelegramIcon, ThemeIcon, TranslateIcon } from '../icons';
-import styles from './GlassContainer.module.scss';
+import s from './GlassContainer.module.scss';
 
 interface GlassContainerProps {
     children: ReactNode;
@@ -36,48 +36,49 @@ export const GlassContainer = ({
     };
 
     return (
-        <div className={clsx(styles.glassContainer, className)} style={containerStyle}>
+        <div className={clsx(s.glassContainer, className)} style={containerStyle}>
 
-            <div className={styles.topLeftCircle}>
+            <div className={s.topLeftCircle}>
                 <CircleIcon />
             </div>
 
-            <div className={styles.bottomLeftCircle}>
+            <div className={s.bottomLeftCircle}>
                 <CircleIcon />
             </div>
 
-            <div className={styles.bottomRightCircle}>
+            <div className={s.topRightCircle}>
                 <CircleIcon />
             </div>
 
-            {/* Верхние иконки */}
-            <div className={styles.topIcons}>
-                <div className={styles.topLeftIcon}>
+            <div className={s.bottomRightCircle}>
+                <CircleIcon />
+            </div>
+
+            <div className={s.topIcons}>
+                <div className={s.topLeftIcon}>
                     <TranslateIcon />
                 </div>
-                <div className={styles.topRightIcon}>
+                <div className={s.topRightIcon}>
                     <ThemeIcon />
                 </div>
             </div>
 
-            <div className={styles.topRightButtons}>
-                <Link href="/about" className={styles.main}> О нас </Link>
-                <Link href="/projects" className={styles.projects}> Проекты </Link>
-                <Link href="/contact" className={styles.aboutMe}> Контакты </Link>
+            <div className={s.topRightButtons}>
+                <Link href="/" className={s.main}> Главная </Link>
+                <Link href="/" className={s.projects}> Проекты </Link>
+                <Link href="/" className={s.aboutMe}> Обо мне </Link>
             </div>
 
-            {/* Основной контент */}
-            <div className={styles.content}>
+            <div className={s.content}>
                 {children}
             </div>
 
-            {/* Нижние правые иконки */}
-            <div className={styles.bottomRightIcons}>
-                <div className={styles.bottomRightIcon}>
+            <div className={s.bottomRightIcons}>
+                <div className={s.bottomRightIcon}>
                     <TelegramIcon />
                 </div>
 
-                <div className={styles.bottomRightIcon}>
+                <div className={s.bottomRightIcon}>
                     <GitHubIcon />
                 </div>
             </div>

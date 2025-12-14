@@ -3,7 +3,7 @@
 import { Loading } from "@/components";
 import { MainPage } from "@/pageComponents";
 import { useState } from "react";
-import styles from "./page.module.css";
+import s from "./page.module.css";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -18,7 +18,7 @@ export default function Home() {
   };
 
   return (
-    <div className={styles.page}>
+    <div className={s.page}>
       <MainPage isLoaded={animationStarted} />
       {isLoading && <Loading onLoadingComplete={handleLoadingComplete} onFadeStart={handleFadeStart} />}
     </div>

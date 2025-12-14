@@ -8,7 +8,7 @@ interface GlassEffectProps {
   width: number;
   height: number;
   borderRadius: number;
-  intensity?: number; // 0.1 (слабый) - 1.0 (максимальный)
+  intensity?: number;
 }
 
 export const GlassEffect = ({ width, height, borderRadius, intensity = 0.8 }: GlassEffectProps) => {
@@ -20,7 +20,6 @@ export const GlassEffect = ({ width, height, borderRadius, intensity = 0.8 }: Gl
   useEffect(() => {
     if (!mountRef.current) return;
 
-    // Scene setup
     const scene = new THREE.Scene();
     sceneRef.current = scene;
 
@@ -41,19 +40,17 @@ export const GlassEffect = ({ width, height, borderRadius, intensity = 0.8 }: Gl
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     rendererRef.current = renderer;
 
-    // Create environment texture for reflections
     const pmremGenerator = new THREE.PMREMGenerator(renderer);
     const envTexture = pmremGenerator.fromScene(new THREE.Scene(), 0.04).texture;
 
-    // Create gradient environment map
     const canvas = document.createElement('canvas');
     canvas.width = 512;
     canvas.height = 512;
     const ctx = canvas.getContext('2d')!;
     const gradient = ctx.createLinearGradient(0, 0, 0, 512);
-    gradient.addColorStop(0, '#87CEEB');  // Sky blue
-    gradient.addColorStop(0.5, '#98FB98'); // Pale green
-    gradient.addColorStop(1, '#F0E68C');   // Khaki
+    gradient.addColorStop(0, '#87CEEB');
+    gradient.addColorStop(0.5, '#98FB98');
+    gradient.addColorStop(1, '#F0E68C');
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, 512, 512);
 
@@ -61,43 +58,35 @@ export const GlassEffect = ({ width, height, borderRadius, intensity = 0.8 }: Gl
     envMapTexture.mapping = THREE.EquirectangularReflectionMapping;
     scene.environment = envMapTexture;
 
-    // Calculate glass properties based on intensity (support values > 1.0 for extreme effects)
     const clampedIntensity = Math.max(0.1, Math.min(10.0, intensity));
 
-    // Enhanced glass material with extreme intensity support
-    const normalizedIntensity = Math.min(clampedIntensity, 1.0); // For standard parameters
-    const extremeMultiplier = clampedIntensity; // Allow extreme values for special effects
+    const normalizedIntensity = Math.min(clampedIntensity, 1.0);
+    const extremeMultiplier = clampedIntensity;
 
-    // Create ultra-refractive glass material for border effect
     const glassMaterial = new THREE.MeshPhysicalMaterial({
-      transmission: 1.0, // Full transparency for maximum refraction
-      thickness: 0.5 + (extremeMultiplier * 2.0), // Much thicker glass for strong distortion
-      roughness: 0.001, // Mirror smooth
-      ior: 1.5 + (extremeMultiplier * 1.5), // Very high IOR for extreme refraction
+      transmission: 1.0,
+      thickness: 0.5 + (extremeMultiplier * 2.0),
+      roughness: 0.001,
+      ior: 1.5 + (extremeMultiplier * 1.5),
       transparent: true,
       opacity: 0.95,
       metalness: 0.0,
       clearcoat: 1.0,
       clearcoatRoughness: 0.001,
       envMap: envMapTexture,
-      envMapIntensity: 1.0 + (extremeMultiplier * 3.0), // Super strong reflections
+      envMapIntensity: 1.0 + (extremeMultiplier * 3.0),
       reflectivity: 0.8,
-      // Maximum dispersion for rainbow edge effects
-      dispersion: extremeMultiplier * 0.2, // Up to 0.2 for extreme rainbow effects
-      // Additional properties for better glass effect
+      dispersion: extremeMultiplier * 0.2,
       attenuationDistance: 0.5,
-      attenuationColor: new THREE.Color(0.9, 0.95, 1.0), // Slight blue tint like real glass
+      attenuationColor: new THREE.Color(0.9, 0.95, 1.0),
     });
 
-    // Create glass border geometry - rounded frame that follows the exact border
-    const borderThickness = Math.max(20, 10 + (extremeMultiplier * 20)); // Dynamic thickness based on intensity
+    const borderThickness = Math.max(20, 10 + (extremeMultiplier * 20));
     const glassElements: THREE.Mesh[] = [];
 
-    // Create rounded rectangle frame using RingGeometry approach
     const outerRadius = Math.min(width, height) / 2;
     const innerRadius = outerRadius - borderThickness;
 
-    // Create shape for rounded rectangle border
     const shape = new THREE.Shape();
     const x = -width / 2;
     const y = -height / 2;
@@ -105,7 +94,6 @@ export const GlassEffect = ({ width, height, borderRadius, intensity = 0.8 }: Gl
     const h = height;
     const r = borderRadius;
 
-    // Outer rounded rectangle
     shape.moveTo(x, y + r);
     shape.lineTo(x, y + h - r);
     shape.quadraticCurveTo(x, y + h, x + r, y + h);
@@ -116,7 +104,6 @@ export const GlassEffect = ({ width, height, borderRadius, intensity = 0.8 }: Gl
     shape.lineTo(x + r, y);
     shape.quadraticCurveTo(x, y, x, y + r);
 
-    // Inner rounded rectangle (hole)
     const hole = new THREE.Path();
     const holeX = x + borderThickness;
     const holeY = y + borderThickness;
@@ -136,18 +123,15 @@ export const GlassEffect = ({ width, height, borderRadius, intensity = 0.8 }: Gl
 
     shape.holes.push(hole);
 
-    // Create geometry from shape
     const frameGeometry = new THREE.ShapeGeometry(shape);
     const frameGlass = new THREE.Mesh(frameGeometry, glassMaterial);
     frameGlass.position.set(0, 0, 0.1);
     scene.add(frameGlass);
     glassElements.push(frameGlass);
 
-    // Enhanced lighting setup
     const ambientLight = new THREE.AmbientLight(0x404040, 0.6);
     scene.add(ambientLight);
 
-    // Multiple directional lights for better realism
     const mainLight = new THREE.DirectionalLight(0xffffff, 1.2);
     mainLight.position.set(10, 10, 5);
     mainLight.castShadow = true;
@@ -159,7 +143,6 @@ export const GlassEffect = ({ width, height, borderRadius, intensity = 0.8 }: Gl
     fillLight.position.set(-5, -5, 3);
     scene.add(fillLight);
 
-    // Add point lights for more complex reflections
     const pointLight1 = new THREE.PointLight(0xffffff, 0.8, 100);
     pointLight1.position.set(50, 50, 50);
     scene.add(pointLight1);
@@ -168,13 +151,11 @@ export const GlassEffect = ({ width, height, borderRadius, intensity = 0.8 }: Gl
     pointLight2.position.set(-50, -50, 50);
     scene.add(pointLight2);
 
-    // Animation loop with enhanced effects
     const animate = () => {
       animationIdRef.current = requestAnimationFrame(animate);
 
       const time = Date.now() * 0.001;
 
-      // Animate glass properties based on intensity
       glassElements.forEach((element, index) => {
         const material = element.material as THREE.MeshPhysicalMaterial;
         const baseRoughness = 0.08 - (clampedIntensity * 0.05);
@@ -182,27 +163,20 @@ export const GlassEffect = ({ width, height, borderRadius, intensity = 0.8 }: Gl
         const baseEnvIntensity = 0.5 + (clampedIntensity * 1.5);
         const baseTransmission = 0.3 + (clampedIntensity * 0.7);
 
-        // Animation intensity scales with glass intensity
         const animationStrength = clampedIntensity * 0.5;
 
-        // Subtle roughness animation
         material.clearcoatRoughness = baseRoughness + Math.sin(time * 2 + index) * (0.01 * animationStrength);
 
-        // Animate IOR for subtle dispersion effect
         material.ior = baseIor + Math.sin(time * 3 + index * 0.5) * (0.02 * animationStrength);
 
-        // Animate environment map intensity
         material.envMapIntensity = baseEnvIntensity + Math.sin(time * 1.5 + index * 0.3) * (0.3 * animationStrength);
 
-        // Subtle transmission animation
         material.transmission = baseTransmission + Math.sin(time * 0.8 + index * 0.7) * (0.05 * animationStrength);
       });
 
-      // Animate lights for dynamic reflections
       pointLight1.intensity = 0.8 + Math.sin(time * 2) * 0.2;
       pointLight2.intensity = 0.6 + Math.cos(time * 1.5) * 0.2;
 
-      // Rotate point lights slightly
       pointLight1.position.x = 50 + Math.sin(time * 0.5) * 10;
       pointLight2.position.x = -50 + Math.cos(time * 0.7) * 10;
 
@@ -212,7 +186,6 @@ export const GlassEffect = ({ width, height, borderRadius, intensity = 0.8 }: Gl
     mountRef.current.appendChild(renderer.domElement);
     animate();
 
-    // Cleanup
     return () => {
       if (animationIdRef.current) {
         cancelAnimationFrame(animationIdRef.current);
@@ -235,7 +208,7 @@ export const GlassEffect = ({ width, height, borderRadius, intensity = 0.8 }: Gl
         width: '100%',
         height: '100%',
         pointerEvents: 'none',
-        zIndex: 1.5 // Between background (1) and content (2)
+        zIndex: 1.5
       }}
     />
   );

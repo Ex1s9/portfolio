@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import styles from './loading.module.scss';
+import s from './loading.module.scss';
 
 interface LoadingPageProps {
   onLoadingComplete?: () => void;
@@ -44,15 +44,15 @@ export const Loading = ({ onLoadingComplete, onFadeStart }: LoadingPageProps) =>
   }, [onLoadingComplete]);
 
   return (
-    <div className={`${styles.loadingContainer} ${!showBackground ? styles.fadeOut : ''}`}>
-      <div className={styles.textContainer}>
+    <div className={`${s.loadingContainer} ${!showBackground ? s.fadeOut : ''}`}>
+      <div className={s.textContainer}>
         <span 
-          className={`${styles.text} ${styles.fullName} ${!showFullName ? styles.fadeOut : ''}`}
+          className={`${s.text} ${s.fullName} ${!showFullName ? s.fadeOut : ''}`}
         >
           Roman Sadovskii
         </span>
         <span
-          className={`${styles.text} ${styles.portfolio} ${!showPortfolio ? styles.fadeOut : ''}`}
+          className={`${s.text} ${s.portfolio} ${!showPortfolio ? s.fadeOut : ''}`}
         >
           Portfolio
         </span>

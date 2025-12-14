@@ -2,7 +2,7 @@ import { GlassContainer } from "@/shared/ui/GlassContainer";
 import { Typography } from "@/shared/ui/typography";
 import { BackgroundArc } from "@/widgets/backgoundArc/BackgroundArc";
 import clsx from 'clsx';
-import styles from './MainPage.module.scss';
+import s from './MainPage.module.scss';
 
 interface MainPageProps {
     isLoaded: boolean;
@@ -10,21 +10,21 @@ interface MainPageProps {
 
 export const MainPage = ({ isLoaded }: MainPageProps) => {
     return (
-        <div className={styles.MainPage}>
+        <div className={s.MainPage}>
             <GlassContainer
-                className={styles.centerBlock}
+                className={s.centerBlock}
                 width={1364}
                 height={948}
                 borderRadius={50}
             >
-                <div className={clsx(styles.textBlock, isLoaded && styles.loaded)}>
-                    <Typography className={styles.firstWord} as="span" fontWeight="regular" fontFamily="italiana">
+                <div className={clsx(s.textBlock, isLoaded && s.loaded)}>
+                    <Typography className={s.firstWord} as="span" fontWeight="regular" fontFamily="italiana">
                         web-
                     </Typography>
-                    <Typography className={styles.secondWord} as="span" fontWeight="regular" fontFamily="italiana">
+                    <Typography className={s.secondWord} as="span" fontWeight="regular" fontFamily="italiana">
                         deve
                     </Typography>
-                    <Typography className={styles.thirdWord} as="span" fontWeight="regular" fontFamily="italiana">
+                    <Typography className={s.thirdWord} as="span" fontWeight="regular" fontFamily="italiana">
                         loper
                     </Typography>
                 </div>
