@@ -14,7 +14,6 @@ export const MainPage = ({ isLoaded }: MainPageProps) => {
             <GlassContainer
                 className={s.centerBlock}
                 width={1364}
-                height={948}
                 borderRadius={50}
             >
                 <div className={clsx(s.textBlock, isLoaded && s.loaded)}>

@@ -13,3 +13,64 @@
      left: 32%;
      overflow: hidden;
 }
+
+// Медиа-запросы для фиксированных позиций
+@media screen and (max-width: 1440px) {
+     .topArc {
+          top: 0;
+          left: 0;
+     }
+
+     .lowArc {
+          left: 32%;
+          bottom: 0;
+     }
+}
+
+@media screen and (max-width: 1200px) {
+     .topArc {
+          top: 0;
+          left: 0;
+     }
+
+     .lowArc {
+          left: 12%;
+          bottom: 0;
+     }
+}
+
+@media screen and (max-width: 1024px) {
+     .topArc {
+          left: -80px;
+          top: -30px;
+     }
+
+     .lowArc {
+          left: 25%;
+          bottom: -20px;
+     }
+}
+
+@media screen and (max-width: 768px) {
+     .topArc {
+          left: -100px;
+          top: -40px;
+     }
+
+     .lowArc {
+          left: 20%;
+          bottom: -30px;
+     }
+}
+
+@media screen and (max-width: 480px) {
+     .topArc {
+          left: -120px;
+          top: -50px;
+     }
+
+     .lowArc {
+          left: 15%;
+          bottom: -40px;
+     }
+}

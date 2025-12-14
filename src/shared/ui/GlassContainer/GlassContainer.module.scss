@@ -7,7 +7,9 @@
   flex-direction: column;
   padding: 40px;
   box-sizing: border-box;
+  min-height: 948px;
 }
+
 
 .topIcons {
   position: absolute;
@@ -33,7 +35,7 @@
 .content {
   flex: 1;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
   min-height: 0;
 }
@@ -99,7 +101,6 @@
     height: 62px;
     border: 1px solid #D4D0C8;
     border-radius: 47px;
-    background-color: #0F0F0F;
 
     font-size: 18px;
     font-weight: 600;
@@ -134,5 +135,62 @@
       height: 1px;
       background-color: #ffffff;
     }
+  }
+}
+
+/* Media Queries */
+@media (min-width: 1441px) {
+
+  .topIcons svg,
+  .topLeftIcon svg,
+  .topRightIcon svg,
+  .bottomRightIcons svg {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@media (max-width: 1440px) and (min-width: 1024px) {
+  .glassContainer {
+    min-height: 716px;
+  }
+
+  .topRightButtons {
+    top: 40px;
+    right: 100px;
+    gap: 50px;
+
+    & a {
+      width: 171px;
+      height: 55px;
+    }
+  }
+}
+
+@media (max-width: 1023px) and (min-width: 768px) {
+  .glassContainer {
+    min-height: 400px;
+  }
+
+  .topIcons svg,
+  .topLeftIcon svg,
+  .topRightIcon svg,
+  .bottomRightIcons svg {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 767px) {
+  .glassContainer {
+    min-height: 320px;
+  }
+
+  .topIcons svg,
+  .topLeftIcon svg,
+  .topRightIcon svg,
+  .bottomRightIcons svg {
+    width: 30px;
+    height: 30px;
   }
 }
