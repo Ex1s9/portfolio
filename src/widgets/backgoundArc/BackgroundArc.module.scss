@@ -14,11 +14,10 @@
      overflow: hidden;
 }
 
-// Медиа-запросы для фиксированных позиций
 @media screen and (max-width: 1440px) {
      .topArc {
           top: 0;
-          left: 0;
+          left: -8%;
      }
 
      .lowArc {
@@ -27,14 +26,14 @@
      }
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1160px) {
      .topArc {
           top: 0;
-          left: 0;
+          left: -13%;
      }
 
      .lowArc {
-          left: 12%;
+          left: 28%;
           bottom: 0;
      }
 }
@@ -65,12 +64,12 @@
 
 @media screen and (max-width: 480px) {
      .topArc {
-          left: -120px;
-          top: -50px;
+          left: -160%;
+          top: -140px;
      }
 
      .lowArc {
-          left: 15%;
           bottom: -40px;
+          left: -20%;
      }
 }

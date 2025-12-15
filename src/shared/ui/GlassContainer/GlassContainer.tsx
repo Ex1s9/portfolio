@@ -69,6 +69,7 @@ export const GlassContainer = ({
                 <Link href="/" className={s.aboutMe}> Обо мне </Link>
             </div>
 
+
             <div className={s.content}>
                 {children}
             </div>

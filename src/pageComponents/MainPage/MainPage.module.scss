@@ -85,19 +85,46 @@
 @media (max-width: 1440px) and (min-width: 1024px) {
   .textBlock {
     .firstWord {
-      font-size: 140px;
-      line-height: 120px;
+      font-size: clamp(140px, calc(140px + (300 - 140) * (100vw - 1024px) / (1440 - 1024)), 300px);
+      line-height: clamp(120px, calc(120px + (170 - 120) * (100vw - 1024px) / (1440 - 1024)), 170px);
     }
 
     .secondWord {
       left: 35%;
-      font-size: 140px;
-      line-height: 100px;
+      font-size: clamp(140px, calc(140px + (300 - 140) * (100vw - 1024px) / (1440 - 1024)), 300px);
+      line-height: clamp(100px, calc(100px + (245 - 100) * (100vw - 1024px) / (1440 - 1024)), 245px);
     }
 
     .thirdWord {
-      font-size: 140px;
-      line-height: 120px;
+      font-size: clamp(140px, calc(140px + (300 - 140) * (100vw - 1024px) / (1440 - 1024)), 300px);
+      line-height: clamp(120px, calc(120px + (170 - 120) * (100vw - 1024px) / (1440 - 1024)), 170px);
+    }
+  }
+}
+
+@media (max-width: 1024px) and (min-width: 360px) {
+  .centerBlock {
+    min-width: 340px;
+    min-height: 620px;
+  }
+
+  .textBlock {
+    padding: 0;
+
+    .firstWord {
+      font-size: clamp(100px, calc(100px + (140 - 100) * (100vw - 360px) / (1024 - 360)), 140px);
+      line-height: clamp(85px, calc(85px + (120 - 85) * (100vw - 360px) / (1024 - 360)), 120px);
+    }
+
+    .secondWord {
+      left: 35%;
+      font-size: clamp(100px, calc(100px + (140 - 100) * (100vw - 360px) / (1024 - 360)), 140px);
+      line-height: clamp(70px, calc(70px + (100 - 70) * (100vw - 360px) / (1024 - 360)), 100px);
+    }
+
+    .thirdWord {
+      font-size: clamp(100px, calc(100px + (140 - 100) * (100vw - 360px) / (1024 - 360)), 140px);
+      line-height: clamp(85px, calc(85px + (120 - 85) * (100vw - 360px) / (1024 - 360)), 120px);
     }
   }
 }

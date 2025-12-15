@@ -95,6 +95,10 @@
   max-width: 197px;
   gap: 75px;
 
+  @media (max-width: 1024px) {
+    display: none;
+  }
+
   & a {
     position: relative;
     width: 197px;
@@ -138,19 +142,8 @@
   }
 }
 
-/* Media Queries */
-@media (min-width: 1441px) {
 
-  .topIcons svg,
-  .topLeftIcon svg,
-  .topRightIcon svg,
-  .bottomRightIcons svg {
-    width: 60px;
-    height: 60px;
-  }
-}
-
-@media (max-width: 1440px) and (min-width: 1024px) {
+@media (max-width: 1440px) and (min-width: 1025px) {
   .glassContainer {
     min-height: 716px;
   }
@@ -165,6 +158,35 @@
       height: 55px;
     }
   }
+
+  .topIcons {
+    top: unset;
+
+    svg {
+      width: 45px;
+      height: 45px;
+    }
+  }
+
+  .bottomRightIcons svg {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@media (max-width: 1024px) and (min-width: 360px) {
+  .glassContainer {
+    padding: 30px 25px;
+  }
+
+  .topIcons {
+    top: unset;
+
+    svg {
+      width: 45px;
+      height: 45px;
+    }
+  }
 }
 
 @media (max-width: 1023px) and (min-width: 768px) {
@@ -172,12 +194,18 @@
     min-height: 400px;
   }
 
-  .topIcons svg,
-  .topLeftIcon svg,
-  .topRightIcon svg,
+  .topIcons {
+    top: unset;
+
+    svg {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
   .bottomRightIcons svg {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
   }
 }
 
@@ -186,11 +214,21 @@
     min-height: 320px;
   }
 
-  .topIcons svg,
-  .topLeftIcon svg,
-  .topRightIcon svg,
-  .bottomRightIcons svg {
-    width: 30px;
-    height: 30px;
+  .topIcons {
+    top: unset;
+
+    svg {
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  .bottomRightIcons {
+    right: 40px;
+
+    svg {
+      width: 40px;
+      height: 40px;
+    }
   }
 }

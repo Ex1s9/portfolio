@@ -1,5 +1,6 @@
 import { GlassContainer } from "@/shared/ui/GlassContainer";
 import { Typography } from "@/shared/ui/typography";
+import { BurgerMenu } from "@/shared/ui/BurgerMenu";
 import { BackgroundArc } from "@/widgets/backgoundArc/BackgroundArc";
 import clsx from 'clsx';
 import s from './MainPage.module.scss';
@@ -11,6 +12,7 @@ interface MainPageProps {
 export const MainPage = ({ isLoaded }: MainPageProps) => {
     return (
         <div className={s.MainPage}>
+            <BurgerMenu />
             <GlassContainer
                 className={s.centerBlock}
                 width={1364}
