@@ -7,9 +7,8 @@
   flex-direction: column;
   padding: 40px;
   box-sizing: border-box;
-  min-height: 948px;
+  min-height: max(400px, 95vh);
 }
-
 
 .topIcons {
   position: absolute;
@@ -145,7 +144,7 @@
 
 @media (max-width: 1440px) and (min-width: 1025px) {
   .glassContainer {
-    min-height: 716px;
+    min-height: max(400px, 80vh);
   }
 
   .topRightButtons {
@@ -230,5 +229,11 @@
       width: 40px;
       height: 40px;
     }
+  }
+}
+
+@media (min-width: 1441px) {
+  .glassContainer {
+    min-height: max(600px, 90vh);
   }
 }

@@ -14,6 +14,30 @@
      overflow: hidden;
 }
 
+@media (min-width: 2000px) {
+     .topArc {
+          top: 0;
+          left: 20%;
+     }
+
+     .lowArc {
+          left: 40%;
+          bottom: 0;
+     }
+}
+
+@media (min-width: 1441px) {
+     .topArc {
+          top: 0;
+          left: 10%;
+     }
+
+     .lowArc {
+          left: 36%;
+          bottom: 0;
+     }
+}
+
 @media screen and (max-width: 1440px) {
      .topArc {
           top: 0;
@@ -40,7 +64,7 @@
 
 @media screen and (max-width: 1024px) {
      .topArc {
-          left: -80px;
+          left: -30%;
           top: -30px;
      }
 
@@ -52,7 +76,7 @@
 
 @media screen and (max-width: 768px) {
      .topArc {
-          left: -100px;
+          left: -55%;
           top: -40px;
      }
 
@@ -62,7 +86,31 @@
      }
 }
 
-@media screen and (max-width: 480px) {
+@media (max-width: 600px) {
+     .topArc {
+          left: -100%;
+          top: -140px;
+     }
+
+     .lowArc {
+          bottom: -40px;
+          left: 0%;
+     }
+}
+
+@media (max-width: 500px) {
+     .topArc {
+          left: -140%;
+          top: -140px;
+     }
+
+     .lowArc {
+          bottom: -40px;
+          left: -10%;
+     }
+}
+
+@media screen and (max-width: 400px) {
      .topArc {
           left: -160%;
           top: -140px;
